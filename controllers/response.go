@@ -1,6 +1,6 @@
-package handler
+package controllers
 
-type CalcResponse struct {
+type Response struct {
 	Error  string  `json:"error"`
 	Result float64 `json:"result"`
 }

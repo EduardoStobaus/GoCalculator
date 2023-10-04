@@ -1,7 +1,9 @@
 package main
 
-import "github.com/EduardoStobaus/GoCalculator/router"
+import (
+	"github.com/EduardoStobaus/GoCalculator/routes"
+)
 
 func main() {
-	router.Initialize()
+	routes.Initialize()
 }
