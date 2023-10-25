@@ -8,7 +8,7 @@ import (
 )
 
 func CalcHandleRequest() {
-	http.HandleFunc("/calculator", controllers.Calculator)
+	http.HandleFunc("/calc", controllers.Calculadora)
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}

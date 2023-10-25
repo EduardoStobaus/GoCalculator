@@ -8,6 +8,5 @@ func Initialize() {
 	router := gin.Default()
 
 	CalcHandleRequest()
-
 	router.Run(":8080")
 }

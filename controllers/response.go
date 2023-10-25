@@ -1,6 +1,6 @@
 package controllers
 
 type Response struct {
-	Error  string  `json:"error"`
-	Result float64 `json:"result"`
+	Erro string  `json:"error"`
+	Resultado float64 `json:"result"`
 }

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k3s-demo
+  namespace: calc
+  labels:
+    app: k3s-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k3s-demo
+  template:
+    metadata:
+      labels:
+        app: k3s-demo
+    spec:
+      containers:
+      - name: k3s-demo
+        image: go-calc-dock:v1
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: k3s-demo
+ namespace: calc
+spec:
+ type: LoadBalancer
+ selector:
+   app: k3s-demo
+ ports:
+   - protocol: TCP
+     port: 8080
+     targetPort: 8080

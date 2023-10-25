@@ -9,7 +9,7 @@ import (
 	"github.com/EduardoStobaus/GoCalculator/schemas"
 )
 
-func Calculator(w http.ResponseWriter, r *http.Request) {
+func Calculadora(w http.ResponseWriter, r *http.Request) {
 	req := &schemas.CalcRequest{}
 	defer r.Body.Close()
 
@@ -20,30 +20,31 @@ func Calculator(w http.ResponseWriter, r *http.Request) {
 
 	// Operação
 	resp := Response{}
-	switch req.Op {
+	switch req.Operador {
 	case "+":
-		resp.Result = req.FirstNumber + req.SecondNumber
+		resp.Resultado = req.PrimeiroNumero + req.SegundoNumero
 	case "-":
-		resp.Result = req.FirstNumber - req.SecondNumber
+		resp.Resultado = req.PrimeiroNumero - req.SegundoNumero
 	case "*":
-		resp.Result = req.FirstNumber * req.SecondNumber
+		resp.Resultado = req.PrimeiroNumero * req.SegundoNumero
 	case "/":
-		if req.SecondNumber == 0.0 {
-			resp.Error = "Divisão por 0 é impossível"
+		if req.SegundoNumero == 0.0 {
+			resp.Erro = "Bad Request: Divisão por 0 não é válido"
 		} else {
-			resp.Result = req.FirstNumber / req.SecondNumber
+			resp.Resultado = req.PrimeiroNumero / req.SegundoNumero
 		}
 	default:
-		resp.Error = fmt.Sprintf("Operação desconhecida: %s! Tente novamente.", req.Op)
+		resp.Erro = fmt.Sprintf("Bad Request: Operador não definido corretamente: %s", req.Operador)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	if resp.Error != "" {
+	if resp.Erro != "" {
 		w.WriteHeader(http.StatusBadRequest)
 	}
 
 	enc := json.NewEncoder(w)
 	if err := enc.Encode(resp); err != nil {
-		log.Printf("Não deu pra codificar %v - %s", resp, err)
+		log.Printf("Não foi possível codificar")
 	}
+
 }
