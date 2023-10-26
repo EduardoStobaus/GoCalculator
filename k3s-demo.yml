@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: k3s-demo
-        image: go-calc-dock:v1
+        image: gocalculator:latest
         imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
