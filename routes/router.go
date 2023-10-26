@@ -6,7 +6,8 @@ import (
 
 func Initialize() {
 	router := gin.Default()
+	port := os.Getenv("PORT")
 
-	CalcHandleRequest()
-	router.Run(":8080")
+	initializeRoutes(router)
+	router.Run(port)
 }
