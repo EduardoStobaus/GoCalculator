@@ -16,5 +16,5 @@ func initializeRoutes(router *gin.Engine) {
 	calcOps.GET("/mult", services.OperationMultiply)
 
 	calcOps.GET("/div", services.OperationDivision)
-	
+
 }

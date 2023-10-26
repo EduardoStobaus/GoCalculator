@@ -1,12 +1,13 @@
 package services
 
-import {
+import (
 	"net/http"
-	"github.com/gin-gonic/gin"
-}
 
-func OperationSubstract(ctx *gin.Context){
-		ctx.JSON(http.StatusOK, gin.H {
-			"msg": "Multiply done successfully",
-		})
+	"github.com/gin-gonic/gin"
+)
+
+func OperationSubstract(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"msg": "Multiply done successfully",
+	})
 }
