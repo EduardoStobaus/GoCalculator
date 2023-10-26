@@ -8,6 +8,6 @@ import (
 
 func OperationSubstract(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
-		"msg": "Multiply done successfully",
+		"msg": "Substract done successfully",
 	})
 }
