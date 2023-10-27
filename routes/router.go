@@ -8,7 +8,7 @@ import (
 
 func Initialize() {
 	router := gin.Default()
-	port := os.Getenv("PORT")
+	port := ":" + os.Getenv("PORT")
 
 	initializeRoutes(router)
 	router.Run(port)

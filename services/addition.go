@@ -1,22 +1,22 @@
 package services
 
 import (
-	"github.com/EduardoStobaus/GoCalculator/controllers"
-	"github.com/EduardoStobaus/GoCalculator/schemas"
 	"github.com/gin-gonic/gin"
 	"fmt"
 )
 
 func OperationAdd(ctx *gin.Context) {
-	req := &schemas.CalcRequest{}
+	req := CalcRequest{}
 	
 	ctx.BindJSON(&req)
 
-	resp := &controllers.Response{}
-	if req.Operador == "+" {
-		resp.Resultado = req.PrimeiroNumero + req.SegundoNumero
+	resp := Response{}
+	if req.Op == "+" {
+		resp.Result = req.FirstNumber + req.SecondNumber
+		fmt.Printf("Result: %f", resp.Result)
 	} else {
-		resp.Erro = fmt.Sprintf("Bad Request: Operador não definido corretamente: %s", req.Operador)
+		resp.Error = fmt.Sprintf("Bad Request: Operador não definido corretamente: %s", req.Op)
 	}
 
+	sendSuccess(ctx, "addition", resp.Result)
 }
