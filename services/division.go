@@ -12,13 +12,12 @@ func OperationDivision(ctx *gin.Context) {
 
 	ctx.BindJSON(&req)
 
-	resp := models.Response{}
 	if req.Op == "/" {
-		resp.Result = req.FirstNumber / req.SecondNumber
+		resp := req.FirstNumber / req.SecondNumber
 		if req.SecondNumber == 00.00 {
 			models.SendError(ctx, http.StatusBadRequest, "division per 0 isn't valid")
 		} else {
-			models.SendSuccess(ctx, "division", resp.Result)
+			models.SendSuccess(ctx, "division", resp)
 		}
 	} else {
 		models.SendError(ctx, http.StatusBadRequest, "operator defined incorrectly")

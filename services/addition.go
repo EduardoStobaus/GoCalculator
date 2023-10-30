@@ -12,10 +12,9 @@ func OperationAdd(ctx *gin.Context) {
 
 	ctx.BindJSON(&req)
 
-	resp := models.Response{}
 	if req.Op == "+" {
-		resp.Result = req.FirstNumber + req.SecondNumber
-		models.SendSuccess(ctx, "addition", resp.Result)
+		resp := req.FirstNumber + req.SecondNumber
+		models.SendSuccess(ctx, "addition", resp)
 	} else {
 		models.SendError(ctx, http.StatusBadRequest, "operator defined incorrectly")
 	}
