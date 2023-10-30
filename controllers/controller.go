@@ -1,11 +1,11 @@
-package routes
+package controllers
 
 import (
 	"github.com/EduardoStobaus/GoCalculator/services"
 	"github.com/gin-gonic/gin"
 )
 
-func initializeRoutes(router *gin.Engine) {
+func calculatorRoutes(router *gin.Engine) {
 
 	calcOps := router.Group("/calc")
 

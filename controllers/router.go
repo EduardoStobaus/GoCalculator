@@ -1,4 +1,4 @@
-package routes
+package controllers
 
 import (
 	"os"
@@ -10,6 +10,6 @@ func Initialize() {
 	router := gin.Default()
 	port := ":" + os.Getenv("PORT")
 
-	initializeRoutes(router)
+	calculatorRoutes(router)
 	router.Run(port)
 }
