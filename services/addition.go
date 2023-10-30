@@ -3,19 +3,20 @@ package services
 import (
 	"net/http"
 
+	"github.com/EduardoStobaus/GoCalculator/models"
 	"github.com/gin-gonic/gin"
 )
 
 func OperationAdd(ctx *gin.Context) {
-	req := CalcRequest{}
+	req := models.CalcRequest{}
 
 	ctx.BindJSON(&req)
 
-	resp := Response{}
+	resp := models.Response{}
 	if req.Op == "+" {
 		resp.Result = req.FirstNumber + req.SecondNumber
-		sendSuccess(ctx, "addition", resp.Result)
+		models.SendSuccess(ctx, "addition", resp.Result)
 	} else {
-		sendError(ctx, http.StatusBadRequest, "operator defined incorrectly")
+		models.SendError(ctx, http.StatusBadRequest, "operator defined incorrectly")
 	}
 }
