@@ -1,7 +1,7 @@
 package services
 
 import (
-	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,9 +14,8 @@ func OperationSubstract(ctx *gin.Context) {
 	resp := Response{}
 	if req.Op == "-" {
 		resp.Result = req.FirstNumber - req.SecondNumber
+		sendSuccess(ctx, "substraction", resp.Result)
 	} else {
-		resp.Error = fmt.Sprintf("Bad Request: Operador não definido corretamente: %s", req.Op)
+		sendError(ctx, http.StatusBadRequest, "operator defined incorrectly")
 	}
-
-	sendSuccess(ctx, "substraction", resp.Result)
 }
