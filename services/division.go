@@ -12,6 +12,11 @@ func OperationDivision(ctx *gin.Context) {
 
 	ctx.BindJSON(&req)
 
+	if err := req.Validate(); err != nil {
+		models.SendError(ctx, http.StatusBadRequest, err.Error())
+		return
+	}
+
 	if req.Op == "/" {
 		resp := req.FirstNumber / req.SecondNumber
 		if req.SecondNumber == 00.00 {

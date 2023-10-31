@@ -15,7 +15,7 @@ type CalcRequest struct {
 }
 
 func (r *CalcRequest) Validate() error {
-	if r.Op == "" {
+	if r.Op == "" && r.FirstNumber == 0 && r.SecondNumber == 0 {
 		return fmt.Errorf("request body is empty or malformed")
 	}
 
