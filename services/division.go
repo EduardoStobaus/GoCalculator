@@ -13,9 +13,7 @@ func OperationDivision(ctx *gin.Context) {
 	ctx.BindJSON(&req)
 
 	if req.Op == "/" {
-		firstNumber := fmt.Println(req.FirstNumber)
-		secondNumber := fmt.Println(req.SecondNumber)
-
+		resp := req.FirstNumber / req.SecondNumber
 		if req.SecondNumber == 00.00 {
 			models.SendError(ctx, http.StatusBadRequest, "division per 0 isn't valid")
 		} else {

@@ -18,7 +18,7 @@ func OperationAdd(ctx *gin.Context) {
 	}
 
 	if req.Op == "+" {
-		resp := float64(req.FirstNumber) + float64(req.SecondNumber)
+		resp := req.FirstNumber + req.SecondNumber
 		models.SendSuccess(ctx, "addition", resp)
 	} else {
 		models.SendError(ctx, http.StatusBadRequest, "operator defined incorrectly")
