@@ -4,14 +4,14 @@ import (
 	"fmt"
 )
 
-func errParamIsRequired(name, typ string) error {
-	return fmt.Errorf("param: %s (type: %s) is required", name, typ)
-}
-
 type CalcRequest struct {
 	Op           string  `json:"op,omitempty"`
 	FirstNumber  float64 `json:"firstNumber"`
-	SecondNumber float64 `json:"secondNumber"`
+	SecondNumber float64 `json:"secondNumber"` 
+}
+
+func errParamIsRequired(name, typ string) error {
+	return fmt.Errorf("param: %s (type: %s) is required", name, typ)
 }
 
 func (r *CalcRequest) Validate() error {
